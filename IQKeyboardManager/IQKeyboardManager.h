@@ -185,6 +185,11 @@ extern NSInteger const kIQPreviousNextButtonToolbarTag;
  */
 - (void)reloadInputViews;
 
+/**
+ Special field overwrite (Patch)
+ */
+@property(nullable, nonatomic, strong) NSArray *overrideIteratingTextFields;
+
 ///---------------------------------------
 /// @name UIKeyboard appearance overriding
 ///---------------------------------------

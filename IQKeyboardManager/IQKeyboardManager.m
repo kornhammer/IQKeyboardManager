@@ -180,6 +180,9 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 //Animation handling
 @synthesize layoutIfNeededOnUpdate              =   _layoutIfNeededOnUpdate;
 
+//Overwrite hanlding
+@synthesize overrideIteratingTextFields              =   _overrideIteratingTextFields;
+
 #pragma mark - Initializing functions
 
 /** Override +load method to enable KeyboardManager when class loader load IQKeyboardManager. Enabling when app starts (No need to write any code) */
@@ -1591,6 +1594,10 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
     UIView *superConsideredView;
     
     UIView *textFieldView = _textFieldView;
+    
+    if (_overrideIteratingTextFields) {
+        return _overrideIteratingTextFields;
+    }
 
     //If find any consider responderView in it's upper hierarchy then will get deepResponderView.
     for (Class consideredClass in _toolbarPreviousNextAllowedClasses)
