@@ -1594,10 +1594,6 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
     UIView *superConsideredView;
     
     UIView *textFieldView = _textFieldView;
-    
-    if (_overrideIteratingTextFields) {
-        return _overrideIteratingTextFields;
-    }
 
     //If find any consider responderView in it's upper hierarchy then will get deepResponderView.
     for (Class consideredClass in _toolbarPreviousNextAllowedClasses)
@@ -1617,6 +1613,10 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
     else
     {
         NSArray *textFields = [textFieldView responderSiblings];
+        
+        if (_overrideIteratingTextFields) {
+            textFields =  _overrideIteratingTextFields;
+        }
         
         //Sorting textFields according to behaviour
         switch (_toolbarManageBehaviour)
